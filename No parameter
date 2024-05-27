@@ -1,0 +1,29 @@
+//Add default(No parameter) constructor to all your programs.
+
+public class Area {
+    private double length;
+    private double breadth;
+
+    // Default constructor
+    public Area() {
+        this.length = 0;
+        this.breadth = 0;
+    }
+
+    // Method to set the dimensions of the rectangle
+    public void setDim(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    // Method to calculate and return the area of the rectangle
+    public double getArea() {
+        return length * breadth;
+    }
+
+    public static void main(String[] args) {
+        Area rectangle = new Area();  // Using default constructor
+        rectangle.setDim(5, 3);
+        System.out.println("The area of the rectangle is: " + rectangle.getArea());
+    }
+}

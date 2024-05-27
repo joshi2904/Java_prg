@@ -1,0 +1,108 @@
+//Add text calculation in country package program.
+
+1. Create the Student class in the country package
+=>// File: src/country/Student.java
+package country;
+
+public class Student {
+    private String name;
+
+    // Default constructor setting name to "Unknown"
+    public Student() {
+        this.name = "Unknown";
+    }
+
+    // Constructor that accepts a name
+    public Student(String name) {
+        this.name = name;
+    }
+
+    // Method to get the name of the student
+    public String getName() {
+        return name;
+    }
+}
+
+
+2. Create the TextCalculation class in the country package
+// File: src/country/TextCalculation.java
+package country;
+
+public class TextCalculation {
+    // Method to count the number of characters in a string
+    public int countCharacters(String text) {
+        if (text == null) {
+            return 0;
+        }
+        return text.length();
+    }
+
+    // Method to count the number of words in a string
+    public int countWords(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
+        }
+        String[] words = text.trim().split("\\s+");
+        return words.length;
+    }
+}
+
+
+3. Create the Main class to demonstrate the usage
+
+// File: src/Main.java
+import country.Student;
+import country.TextCalculation;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create student objects
+        Student student1 = new Student();
+        Student student2 = new Student("Alice");
+
+        // Print student names
+        System.out.println("Student 1 name: " + student1.getName());
+        System.out.println("Student 2 name: " + student2.getName());
+
+        // Create TextCalculation object
+        TextCalculation textCalc = new TextCalculation();
+
+        // Demonstrate text calculation
+        String sampleText = "Hello, World! Welcome to Java programming.";
+        int charCount = textCalc.countCharacters(sampleText);
+        int wordCount = textCalc.countWords(sampleText);
+
+        System.out.println("The number of characters in \"" + sampleText + "\" is: " + charCount);
+        System.out.println("The number of words in \"" + sampleText + "\" is: " + wordCount);
+    }
+}
+
+3. Create the Main class to demonstrate the usage
+// File: src/Main.java
+import country.Student;
+import country.TextCalculation;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create student objects
+        Student student1 = new Student();
+        Student student2 = new Student("Alice");
+
+        // Print student names
+        System.out.println("Student 1 name: " + student1.getName());
+        System.out.println("Student 2 name: " + student2.getName());
+
+        // Create TextCalculation object
+        TextCalculation textCalc = new TextCalculation();
+
+        // Demonstrate text calculation
+        String sampleText = "Hello, World! Welcome to Java programming.";
+        int charCount = textCalc.countCharacters(sampleText);
+        int wordCount = textCalc.countWords(sampleText);
+
+        System.out.println("The number of characters in \"" + sampleText + "\" is: " + charCount);
+        System.out.println("The number of words in \"" + sampleText + "\" is: " + wordCount);
+    }
+}
+
+
