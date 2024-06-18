@@ -1,0 +1,25 @@
+write a program to count the number of objects created by the users 
+=>class ObjectCounter {
+    // Static variable to keep track of the number of instances
+    private static int objectCount = 0;
+
+    // Constructor that increments the object count
+    public ObjectCounter() {
+        objectCount++;
+    }
+
+    // Static method to get the current object count
+    public static int getObjectCount() {
+        return objectCount;
+    }
+
+    public static void main(String[] args) {
+        // Creating instances of ObjectCounter
+        ObjectCounter obj1 = new ObjectCounter();
+        ObjectCounter obj2 = new ObjectCounter();
+        ObjectCounter obj3 = new ObjectCounter();
+
+        // Displaying the number of objects created
+        System.out.println("Number of objects created: " + ObjectCounter.getObjectCount());
+    }
+}
