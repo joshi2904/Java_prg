@@ -1,0 +1,20 @@
+Robustness Testing Scenarious
+example =Blinking.
+
+Specific secnarios can cause softwear failure due to a lack of softwear robustness.The scenarious that can be tested are.
+
+
+1)Test for handling large amount of data.
+=>Multiple uesres are trying to access website at the same time.
+
+2)Test for unexpected inputs and edge cases.
+=>Incident of outoff stock case. 
+
+3)Test for system failures and recovery.
+=>Event were multipale networking are working find a specific note is failed due to outed.
+
+4)Test for long period of sustained usage.
+=>Longer liability with accessing multipale funcationality for entier life softwear.
+
+5)Test for compatibility with various hardware and software environments.
+=>IOS,Androids

@@ -1,0 +1,24 @@
+Questions asked in the First round:
+
+1.Authentication:-
+	example   -> Linkdin
+		->the process of identify any person of entity for any system is call Authentication.
+
+2.Authorization:-
+	example   ->
+	                 ->The process of gating permition from the system so that we can enter any specific part of the system.
+
+3.Architecture:-
+	example	->Netflix
+		->Design,BluePrint,Drawing.
+
+4.Infrastructure:-
+	example   ->
+	                 ->There resorces required to build and develop any perticular useing design blueprint.
+
+5.Access Control:-
+	exaple    ->
+	               ->It is a procees of gaming permision which defines how to accebility.
+		1.Public   -> Globel Access
+		2.Private  -> Admin Access
+		3.Protected-> Group Access

@@ -1,0 +1,8 @@
+3).API:-Application Programming Interface
+
+->It is a program agend that is use to communicate between multiple softwear(booking.com).
+
+4).Business Logic
+
+->
+

@@ -1,0 +1,735 @@
+
+!)Browser lounching 
+
+->Set up dependencies: First, you need to add dependencies for Selenium and TestNG in your pom.xml (if you're using Maven). Here's the code for the dependencies:
+xml
+<dependencies>
+    <!-- Selenium WebDriver Dependency -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+
+    <!-- TestNG Dependency -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- WebDriverManager Dependency to manage driver binaries automatically -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>4.4.3</version>
+    </dependency>
+</dependencies>
+
+->Selenium WebDriver Test Code:
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.Test;
+
+public class BrowserLaunchTest {
+    
+    @Test
+    public void launchBrowser() {
+        // Set up WebDriver using WebDriverManager to automatically download and manage the browser driver
+        WebDriverManager.chromedriver().setup();
+        
+        // Instantiate Chrome WebDriver
+        WebDriver driver = new ChromeDriver();
+        
+        // Open a URL
+        driver.get("https://www.wikipedia.org/");
+        
+        // Maximize the browser window
+        driver.manage().window().maximize();
+        
+        // Get the title of the page and print it
+        String title = driver.getTitle();
+        System.out.println("Page Title: " + title);
+        
+        // Optionally, perform other actions (e.g., interact with the page)
+        
+        // Close the browser
+        driver.quit();
+    }
+}
+---------------------------------------------------------------------------------------------
+!)Chaek box drop down
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+
+public class CheckboxDropdownTest {
+
+    @Test
+    public void testCheckboxAndDropdown() {
+        // Set up WebDriver using WebDriverManager
+        WebDriverManager.chromedriver().setup();
+        
+        // Instantiate Chrome WebDriver
+        WebDriver driver = new ChromeDriver();
+        
+        // Open a test website (example: a page with a checkbox and dropdown)
+        driver.get("https://www.w3schools.com/html/html_forms.asp");
+        
+        // Maximize the browser window
+        driver.manage().window().maximize();
+        
+        // Check the checkbox with name 'vehicle1'
+        driver.findElement(By.name("vehicle1")).click();
+        System.out.println("Checkbox selected: " + driver.findElement(By.name("vehicle1")).isSelected());
+        
+        // Uncheck the checkbox
+        driver.findElement(By.name("vehicle1")).click();
+        System.out.println("Checkbox selected after unchecking: " + driver.findElement(By.name("vehicle1")).isSelected());
+        
+        // Locate the dropdown element and select an option by visible text
+        Select dropdown = new Select(driver.findElement(By.id("car")));
+        dropdown.selectByVisibleText("Volvo");
+        
+        // Verify that the option is selected by visible text
+        Assert.assertEquals(dropdown.getFirstSelectedOption().getText(), "Volvo");
+        System.out.println("Selected option: " + dropdown.getFirstSelectedOption().getText());
+        
+        // Close the browser
+        driver.quit();
+    }
+}
+-->Dependencies for Maven (pom.xml):
+<dependencies>
+    <!-- Selenium WebDriver Dependency -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+
+    <!-- TestNG Dependency -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- WebDriverManager Dependency to manage driver binaries automatically -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>4.4.3</version>
+    </dependency>
+</dependencies>
+------------------------------------------------------------------------------------------------------
+!). Radio button chek
+
+-->Full Selenium TestNG Code for Radio Button:
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+
+public class RadioButtonTest {
+
+    @Test
+    public void testRadioButton() {
+        // Set up WebDriver using WebDriverManager
+        WebDriverManager.chromedriver().setup();
+        
+        // Instantiate Chrome WebDriver
+        WebDriver driver = new ChromeDriver();
+        
+        // Open a test website (example: a page with radio buttons)
+        driver.get("https://www.w3schools.com/html/html_forms.asp");
+        
+        // Maximize the browser window
+        driver.manage().window().maximize();
+        
+        // Locate the radio button for "Male" and click it if it's not already selected
+        By maleRadioButton = By.id("male");
+        
+        if (!driver.findElement(maleRadioButton).isSelected()) {
+            driver.findElement(maleRadioButton).click();
+            System.out.println("Radio button 'Male' selected.");
+        } else {
+            System.out.println("Radio button 'Male' is already selected.");
+        }
+        
+        // Verify that the radio button is selected
+        Assert.assertTrue(driver.findElement(maleRadioButton).isSelected(), "The 'Male' radio button should be selected.");
+        
+        // Optionally, locate and deselect another radio button if needed (uncheck)
+        // By femaleRadioButton = By.id("female");
+        // if (driver.findElement(femaleRadioButton).isSelected()) {
+        //     driver.findElement(femaleRadioButton).click();
+        //     System.out.println("Radio button 'Female' deselected.");
+        // }
+
+        // Verify if the radio button is selected
+        Assert.assertTrue(driver.findElement(maleRadioButton).isSelected(), "The 'Male' radio button should be selected.");
+        
+        // Close the browser
+        driver.quit();
+    }
+}
+---->Dependencies for Maven (pom.xml):
+<dependencies>
+    <!-- Selenium WebDriver Dependency -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+
+    <!-- TestNG Dependency -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- WebDriverManager Dependency to manage driver binaries automatically -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>4.4.3</version>
+    </dependency>
+</dependencies>
+---------------------------------------------------------------------------------------------------------------------------
+!)4. Nevigation previous and next
+
+-->Full Selenium WebDriver Code:
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+
+public class NavigationTest {
+
+    @Test
+    public void testNavigation() {
+        // Set up WebDriver using WebDriverManager
+        WebDriverManager.chromedriver().setup();
+        
+        // Instantiate Chrome WebDriver
+        WebDriver driver = new ChromeDriver();
+        
+        // Open the first URL (Wikipedia)
+        driver.get("https://www.wikipedia.org");
+        
+        // Maximize the window for visibility
+        driver.manage().window().maximize();
+        
+        // Print the current URL to verify the first page
+        System.out.println("Current Page: " + driver.getCurrentUrl());
+        
+        // Navigate to a new URL (Amazon)
+        driver.get("https://www.amazon.com");
+        
+        // Print the current URL to verify navigation
+        System.out.println("Current Page after navigation: " + driver.getCurrentUrl());
+        
+        // Use the back() method to navigate to the previous page (Wikipedia)
+        driver.navigate().back();
+        
+        // Print the current URL to verify we have gone back
+        System.out.println("Current Page after back(): " + driver.getCurrentUrl());
+        
+        // Use the forward() method to go to the next page (Amazon)
+        driver.navigate().forward();
+        
+        // Print the current URL to verify we have gone forward
+        System.out.println("Current Page after forward(): " + driver.getCurrentUrl());
+        
+        // Assert that the final URL is Amazon's URL to confirm navigation
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.amazon.com");
+        
+        // Close the browser
+        driver.quit();
+    }
+}
+--->Maven Dependencies for the project (pom.xml):
+<dependencies>
+    <!-- Selenium WebDriver Dependency -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+
+    <!-- TestNG Dependency -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- WebDriverManager Dependency to manage driver binaries automatically -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>4.4.3</version>
+    </dependency>
+</dependencies>
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+!). Screenshot uploading and file uploading
+
+--->Full Selenium WebDriver Code (Java with TestNG):
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.IOException;
+import org.apache.commons.io.FileUtils;
+
+public class FileUploadAndScreenshotTest {
+
+    @Test
+    public void testFileUploadAndScreenshot() throws IOException {
+        // Setup WebDriver using WebDriverManager
+        WebDriverManager.chromedriver().setup();
+
+        // Initialize WebDriver (Chrome in this case)
+        WebDriver driver = new ChromeDriver();
+
+        // Open a website with file upload functionality (for demonstration, let's use an example site)
+        driver.get("https://www.testfileupload.com/");
+
+        // Locate the file upload element using its name, id, or any suitable locator
+        // (This is a placeholder URL; you should replace this with an actual file upload page)
+        driver.findElement(By.name("uploadfile")).sendKeys("path_to_your_file.txt");
+
+        // Assert that the file upload was successful
+        // (This step depends on the page after the upload; modify it as per your actual application)
+        String successMessage = driver.findElement(By.id("uploadMessage")).getText();
+        Assert.assertEquals(successMessage, "File uploaded successfully!");
+
+        // Take a screenshot and save it in the specified location
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshot, new File("screenshot.png"));
+
+        // Verify that the screenshot was saved successfully
+        File screenshotFile = new File("screenshot.png");
+        Assert.assertTrue(screenshotFile.exists(), "Screenshot was not saved successfully!");
+
+        // Close the browser
+        driver.quit();
+    }
+}
+--->Maven Dependency for the Project (pom.xml):
+<dependencies>
+    <!-- Selenium WebDriver Dependency -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.0.0</version>
+    </dependency>
+
+    <!-- TestNG Dependency -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- WebDriverManager Dependency -->
+    <dependency>
+        <groupId>io.github.bonigarcia</groupId>
+        <artifactId>webdrivermanager</artifactId>
+        <version>4.4.3</version>
+    </dependency>
+
+    <!-- Apache Commons IO Dependency for file operations -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.8.0</version>
+    </dependency>
+</dependencies>
+--------------------------------------------------------------------------------------------
+1.Write a Selenium script to open the URL https://www.wikipedia.org/ in google browsers(Chrome). Make sure to set up the required WebDriver for google browser. 
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class OpenWikipedia {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open the URL
+        driver.get("https://www.wikipedia.org/");
+
+        // Maximize the window
+        driver.manage().window().maximize();
+
+        // Wait for 5 seconds (optional)
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+2.	Open the URL https://www.amazon.com/ in Chrome. Then, perform the following actions:
+•	Click on the "Best Sellers" link.
+•	Go back to the previous page.
+•	Refresh the current page.
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonActions {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open the Amazon website
+        driver.get("https://www.amazon.com/");
+
+        // Maximize the window
+        driver.manage().window().maximize();
+
+        // Click on the "Best Sellers" link
+        driver.findElement(By.linkText("Best Sellers")).click();
+
+        // Wait for a few seconds (optional to see the action)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Go back to the previous page
+        driver.navigate().back();
+
+        // Wait for a few seconds (optional to see the action)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Refresh the current page
+        driver.navigate().refresh();
+
+        // Wait for a few seconds (optional to see the action)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+-------------------------------------------------------------------------------------------------------
+3.	Visit the URL https://www.w3schools.com/html/html_forms.asp.
+•	Locate the checkbox for "I agree to receive email notifications" and check it.
+•	Uncheck the checkbox.
+•	Locate and select the radio button for "Male".
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AmazonActions {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open the Amazon website
+        driver.get("https://www.amazon.com/");
+
+        // Maximize the window
+        driver.manage().window().maximize();
+
+        // Click on the "Best Sellers" link
+        driver.findElement(By.linkText("Best Sellers")).click();
+
+        // Wait for a few seconds (optional to see the action)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Go back to the previous page
+        driver.navigate().back();
+
+        // Wait for a few seconds (optional to see the action)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Refresh the current page
+        driver.navigate().refresh();
+
+        // Wait for a few seconds (optional to see the action)
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+-----------------------------------------------------------------------------------------------------------------
+4.	Write a Selenium script to:(any website)
+•	Select a dropdown option by visible text.
+•	Select a dropdown option by value.
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropdownSelection {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Open a sample URL with a dropdown (you can replace this with any URL)
+        driver.get("https://www.w3schools.com/html/html_forms.asp");
+
+        // Maximize the window
+        driver.manage().window().maximize();
+
+        // Locate the dropdown element by its ID (replace "dropdownId" with the actual ID of the dropdown)
+        WebElement dropdown = driver.findElement(By.id("dropdownId"));
+
+        // Create a Select object to interact with the dropdown
+        Select select = new Select(dropdown);
+
+        // Select the dropdown option by visible text
+        select.selectByVisibleText("Option 1");
+
+        // Wait for a few seconds to see the change (optional)
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Select the dropdown option by value
+        select.selectByValue("option2");
+
+        // Wait for a few seconds to see the change (optional)
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+----------------------------------------------------------------------
+
+5.	Write a Selenium script that performs the following actions: Open the URL https://www.example.com.
+•	Navigate to a new URL https://www.google.com using the get() method.
+•	Navigate back to the previous page.
+•	Refresh the page.
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class NavigationTest {
+    public static void main(String[] args) {
+        // Set path to chromedriver
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new Chrome browser instance
+        WebDriver driver = new ChromeDriver();
+
+        // Open the first URL
+        driver.get("https://www.example.com");
+
+        // Navigate to a new URL
+        driver.get("https://www.google.com");
+
+        // Navigate back to the previous page
+        driver.navigate().back();
+
+        // Refresh the current page
+        driver.navigate().refresh();
+
+        // Close the browser
+        driver.quit();
+    }
+}
+---------------------------------------------------------------------------------------------------------------------
+
+6.	Write a Selenium script to upload a file using the sendKeys() method for an input element with type="file".
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FileUploadTest {
+    public static void main(String[] args) {
+        // Set path to chromedriver
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new Chrome browser instance
+        WebDriver driver = new ChromeDriver();
+
+        // Open the URL with a file upload form
+        driver.get("https://www.example.com/upload");
+
+        // Locate the file input element and upload a file
+        driver.findElement(By.name("file")).sendKeys("path_to_file");
+
+        // Close the browser
+        driver.quit();
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+7.	Write a Selenium WebDriver script to open the URL https://twitter.com/settings/account.
+•	Select a checkbox if it is not already selected.
+•	Deselect it if it is selected.
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CheckboxTest {
+    public static void main(String[] args) {
+        // Set path to chromedriver
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new Chrome browser instance
+        WebDriver driver = new ChromeDriver();
+
+        // Open Twitter account settings page
+        driver.get("https://twitter.com/settings/account");
+
+        // Locate the checkbox element
+        WebElement checkbox = driver.findElement(By.id("checkbox_id"));
+
+        // Select the checkbox if not already selected
+        if (!checkbox.isSelected()) {
+            checkbox.click();
+        }
+
+        // Deselect the checkbox if selected
+        if (checkbox.isSelected()) {
+            checkbox.click();
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+-------------------------------------------
+8.	Write a Selenium script that: (Any Website)
+•	Selects an option from a dropdown by visibleText using the Select class.
+•	Selects multiple options from a multi-select dropdown using the Select class.
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropdownTest {
+    public static void main(String[] args) {
+        // Set path to chromedriver
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+
+        // Create a new Chrome browser instance
+        WebDriver driver = new ChromeDriver();
+
+        // Open the website with a dropdown
+        driver.get("https://www.example.com");
+
+        // Locate the dropdown element by its ID
+        Select dropdown = new Select(driver.findElement(By.id("dropdown_id")));
+
+        // Select an option by visible text
+        dropdown.selectByVisibleText("Option 1");
+
+        // Select multiple options from a multi-select dropdown
+        Select multiSelectDropdown = new Select(driver.findElement(By.id("multi_select_dropdown_id")));
+        multiSelectDropdown.selectByVisibleText("Option 1");
+        multiSelectDropdown.selectByVisibleText("Option 2");
+
+        // Close the browser
+        driver.quit();
+    }
+}
+---------------------------------------------------------------------------------------------------------------------
+
+
+9.	Write a Selenium WebDriver script that opens a browser and closes it based on user input. The script should prompt the user for input to either open or close the browser.  
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.Scanner;
+
+public class BrowserControlTest {
+    public static void main(String[] args) {
+        // Get user input to open or close the browser
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter 'open' to open the browser or 'close' to close it: ");
+        String action = scanner.nextLine();
+
+        WebDriver driver = null;
+
+        if (action.equalsIgnoreCase("open")) {
+            // Open the browser
+            System.setProperty("webdriver.chrome.driver", "path_to_chromedriver");
+            driver = new ChromeDriver();
+            driver.get("https://www.example.com");
+        } else if (action.equalsIgnoreCase("close")) {
+            // Close the browser
+            if (driver != null) {
+                driver.quit();
+            }
+        }
+
+        scanner.close();
+    }
+}
+-------------------------------------------------------------------------------------------------------------
+
