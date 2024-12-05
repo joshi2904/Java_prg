@@ -1,0 +1,226 @@
+[8:27 AM, 12/5/2024] Devang Joshi: Ebelementexamples package,
+
+Import org.openqa.selenium.By; import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Checktioxi (
+
+public static void main(String[] args) {
+
+// Selecting CheckBox
+
+System.setProperty("webdriver.chrome.driver,
+
+"C:\\Users\\thirt\\Downloads\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe");
+
+MebDriver driver new ChromeDriver();
+
+driver.manage().deleteAllCookies();
+
+driver.manage().window).maximize();
+
+driver.get("https://demo.guru99.com/test/radio.html");
+
+Webflement option driver.findElement(By.id("vfb-6-0"));
+
+// This will Toggle the Check bac
+
+optioni.click();
+
+// Check whether the check box is toggled on if (optiont.isselected()) (
+
+System.out.println("Checkbox is Toggled On");
+
+checkBox
+
+)else ( System.out.println("Checkbox is Toggled Off");
+
+}}}
+Check Box
+[8:28 AM, 12/5/2024] Devang Joshi: 8:28
+
+For pin wine
+
+Yesterday
+
+9:51 PM
+
+87
+
+package in belesentexamples;
+
+import java.io.File; Import java.io.IOException;
+
+import org.openqa.selenium.OutputType;
+
+Laport org.openqa.selenium. TakesScreenshot; import org.openqa.selenium.Web@river;
+
+Export org.openqa.selenlum. WebOr IverException;
+
+Import org.openqa.selenium. chrome ChromeDriver;
+
+import org.openqa.selenium.io.FileHandler;
+
+public class TarScreenshot (
+
+public static void main(String)] args) String baselurl "http://doso.guru.com/test/newtours/";
+
+System.setProperty(webdriver.chrome.triver",
+
+"C:\\thers\\AyushDown Loads\\choomnortver-wtoba (2)\\chromedriver-win64\\chromedetuar.exe"
+
+WebDriver driver now ChromeDriver);
+
+driver manage).deleteAllCookies); driver manage(window).maximize();
+
+driver.get(baseUrl);
+
+//tme These thod rapture screenshot Lakeerpustiot screenshot LakesScreenshot driver;
+
+try
+
+source screenshot-getScreenshotAs (OutputType.FILE); File source
+
+Filettandler.copy(source, new File("C:\\Users\\Ayush\\OneDrive\\Documents\\Testing\\screenCaptureScreenshot.png"));
+
+catch (WebDriverException | 10Exception e) (
+
+1/7000 Auto-generated catch block
+
+e.printStackTrace();
+
+//Saving the screenshot in desired location
+
+File source scremshot.getScreenshots(Output Type FILE);
+
+//Path to the location to save screenshot Flauttis.copy 11 (source, na Fila Selentumscreenshots/screen.png"});
+
+System.out.println("Screenshot is captured");
+
+driver.quit();
+
+。
+
+Send
+
+Favorite
+
+Edit
+
+Delete
+
+More
+
+Screenshot
+[8:29 AM, 12/5/2024] Devang Joshi: For pin wine
+
+87
+
+Yesterday
+
+9:51 PM
+
+package belementexamples;
+
+import org.openqa.selenium.By;
+
+Emport org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.WebElement;
+
+Leport org.openqa.selenium.chrome.ChromeDriver;
+
+public class FindRadioButton {
+
+public static void main(String] args) { System.setProperty("webdriver.chrome.driver",
+
+"C:\\Users\\thirt\\Downloads\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe");
+
+WebDriver driver new ChromeDriver);
+
+driver.manage().deleteAllCookies();
+
+driver.manage().window.maximize();
+
+driver.get("https://demo.guru99.com/test/radio.html");
+
+WebElement radiol = driver.findElement(By.id("vfb-7-1"));
+
+WebElement radio2 driver.findElement(By.id("vfb-7-2"));
+
+//Radio Buttons is selected
+
+//radiol.click();
+
+System.out.println("Radio Button Option 1 Selected");
+
+//Radio Buttoni is de-selected and Radio Button is selected
+
+radio2.click();
+
+System.out.println("Radio Button Option 2 Selected");
+
+Army
+
+。
+}}
+Send
+
+Favorite
+
+Edit
+
+Delete
+
+More
+
+
+Radio button
+[8:30 AM, 12/5/2024] Devang Joshi: 8:29
+
+Yesterday
+
+9:51 PM
+
+86
+
+public class NavigateChrome (
+
+public static void main(String[] args) throws InterruptedException System.setProperty("webdriver.chrome.driver",
+
+"C:\\users\\Ayush\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe");
+
+WebDriver driver new ChromeDriver();
+
+driver.manage.deleteAllCookies();
+
+//To set the size of the window //To maximize the window driver.manage().window().maximize();
+
+driver.get("https://ww.gmail.com/");
+
+driver.navigate().to("https://www.facebook.com/"); Thread.sleep(1000);
+
+//To navigate to previous page driver.navigate().back(); Thread.sleep(1000);
+
+//To navigate to next page driver.navigate().forward(); Thread.sleep(1000);
+
+//Refresh current web page driver.navigate().refresh();
+
+。
+
+Send
+
+Favorite
+
+Edit
+
+Delete
+
+More
+
+}}
+
+Navigation
